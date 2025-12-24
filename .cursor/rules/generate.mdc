@@ -1,0 +1,178 @@
+---
+alwaysApply: false
+---
+# Project Generation Instructions — Medical Clinic Website (Static Next.js)
+
+## Context
+You are building a new website for a medical clinic (the owner is the user's father). The site must feel:
+- Professional and trustworthy
+- Calm, clean, and accessible
+- Easy to navigate for patients of all ages
+- Optimized for mobile
+- Fast and SEO-friendly
+
+## Clinic Details (Use these as source-of-truth content)
+- Clinic name: The Simcoe Clinic  
+- Location: Barrie, Ontario  
+- Address: 370 Bayview Dr, Barrie, ON L4N 7L3  
+- Hours: 9:00 AM – 4:00 PM, Monday to Friday  
+- Specialty: Pain intervention (Specializing in Pain Intervention)  
+- Booking: No online booking system  
+- Patient intake: We need a section/page with links to pre-visit forms (downloadable PDFs or hosted links)
+
+
+## Tech stack:
+- Next.js (prefer App Router)
+- Tailwind CSS
+- Static export only (no backend)
+- Hosted on GitHub Pages
+
+The clinic website should function as:
+- A public-facing informational site
+- A conversion path for patients to call / email / request an appointment (via phone/email link or external booking link)
+- A clear source for clinic hours, services, location, and policies
+
+IMPORTANT: No backend. Do not implement server-side APIs. Do not store sensitive patient information.
+
+---
+
+## Core Constraints (Non-Negotiable)
+1. Static-only deployment
+   - Must support `next export` / static generation
+   - No server runtime features
+   - No dynamic SSR requirements
+
+2. GitHub Pages compatibility
+   - Ensure `basePath` and `assetPrefix` compatibility
+   - Ensure routes and assets work under `/<repo-name>/`
+
+3. Accessibility & compliance mindset
+   - Clear typography, contrast, and focus states
+   - Semantic HTML
+   - Screen reader friendly navigation
+   - Avoid dark patterns and misleading medical claims
+
+4. Medical professionalism
+   - No exaggerated claims
+   - Clear disclaimers where appropriate
+   - Language should be patient-friendly and non-technical
+
+---
+
+## Agent Deliverables (You must produce these before coding)
+### 1) A project plan and specification
+Create a PRD.md (Project Requirements Document) that includes:
+- Goals and non-goals
+- Primary users (patients, caregivers, new patients, existing patients)
+- Site map (pages + sections)
+- Content requirements per page
+- Design direction (style, tone, UI patterns)
+- Technical constraints (static export, GitHub Pages, Next.js)
+- Accessibility requirements
+- SEO requirements
+- Success criteria (what “done” means)
+- Out of scope items
+
+### 2) A structured implementation plan
+Provide:
+- Milestones/phases
+- File and folder structure for Next.js App Router
+- Reusable components list
+- Content strategy (how content will be maintained)
+- Deployment approach for GitHub Pages
+- Testing checklist
+
+Do NOT write code until PRD.md and the plan are completed.
+
+---
+
+## Suggested Site Structure (Baseline)
+You should propose a sitemap exactly like:
+
+1) Home
+   - Hero: clinic name, short tagline, primary CTA (Call)
+   - Mission Statement
+   - Location + hours snapshot
+   - Footer with contact info
+
+2) Forms
+   - Small description of forms to fill out
+   - Link to external forms
+
+4) About Us
+   - Providers bios (only the info user supplies)
+   - Photos (optional)
+
+4) Contact / Location
+   - Address, map link
+   - Hours
+   - Phone, email, fax
+
+5) Information / FAQs
+    - 5 FAQs will go here
+    - 3 PDF documents (Constipation, Pain Terminology and Pathways, Physician Referral)
+
+---
+
+## Content Requirements (Ask user if missing)
+Before implementation, identify missing information needed:
+- Clinic name and branding preferences
+- Address, phone, email
+- Hours
+- Services offered (short list)
+- Booking method (phone vs external booking link)
+- Provider names/titles/bios
+- Insurance/payment info (if applicable)
+- Photos/logos (if any)
+- Policies (cancellation, referrals, walk-ins)
+- Any required legal disclaimers
+
+If any are missing, propose placeholders with a clear content checklist.
+
+---
+
+## Design Direction
+- Palette: light and airy
+- Feeling: calm, safe, relaxing, professional
+- Design: modern clinic aesthetic (white space, soft accents, gentle typography)
+- Avoid harsh contrasts, heavy borders, or loud colors
+
+---
+
+## SEO Requirements (Static + Practical)
+- Descriptive page titles and meta descriptions
+- Open Graph tags
+- Sitemap generation (static)
+- Robots.txt
+- Local SEO: clinic name, city/region, services keywords
+- Add JSON-LD LocalBusiness/MedicalOrganization schema (static)
+
+---
+
+## Accessibility Requirements
+- Keyboard navigable menus
+- Visible focus states
+- Color contrast pass (AA where possible)
+- Alt text for meaningful images
+- Skip-to-content link
+- Form elements (if any) labeled properly
+- Avoid carousels unless necessary
+
+---
+
+## Implementation Guidance (Static Hosting)
+- Prefer App Router + `generateStaticParams` for any dynamic route
+- Use `next.config.js` for:
+  - `output: "export"`
+  - correct `basePath` and `assetPrefix` for GitHub Pages
+- Images:
+  - Prefer local optimized assets in `/public`
+  - If using `next/image`, ensure compatibility with static export and base path
+
+---
+
+## Begin Here
+Step 1: Produce PRD.md.
+Step 2: Produce the milestone-based plan.
+Step 3: Produce a final sitemap + content checklist for the user to fill in.
+Only then move to implementation.
