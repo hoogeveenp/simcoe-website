@@ -1,8 +1,8 @@
-import type { Metadata } from 'next';
-import { CLINIC_NAME, CLINIC_SPECIALTY } from '@/src/lib/constants';
-import Header from '@/src/components/layout/Header';
-import Footer from '@/src/components/layout/Footer';
-import './globals.css';
+import type { Metadata } from "next";
+import { CLINIC_NAME, CLINIC_SPECIALTY } from "@/src/lib/constants";
+import Header from "@/src/components/layout/Header";
+import Footer from "@/src/components/layout/Footer";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <main id="main-content" className="min-h-screen">
+        <main id="main-content" className="">
           {children}
         </main>
         <Footer />
@@ -29,4 +29,3 @@ export default function RootLayout({
     </html>
   );
 }
-

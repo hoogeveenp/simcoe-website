@@ -26,7 +26,7 @@ export function Button({
     accent:
       'bg-gradient-to-br from-accent-600 via-accent-700 to-accent-800 text-white hover:from-accent-500 hover:via-accent-600 hover:to-accent-700 focus:ring-accent-500',
     outline:
-      'border-2 border-primary-700 text-primary-800 bg-gradient-to-br from-transparent to-primary-50/10 hover:bg-gradient-to-br hover:from-primary-700 hover:to-primary-800 hover:text-white focus:ring-primary-600',
+      'border-2 border-primary-700 text-white bg-gradient-to-br from-transparent to-primary-50/10 hover:bg-gradient-to-br hover:from-primary-700 hover:to-primary-800 hover:text-white focus:ring-primary-600',
   };
 
   const sizes = {

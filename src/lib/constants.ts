@@ -1,9 +1,8 @@
 // Clinic information constants
 export const CLINIC_NAME = "The Simcoe Clinic";
 export const CLINIC_ADDRESS = "370 Bayview Dr, Barrie, ON L4N 7L3";
-export const CLINIC_PHONE = "[Phone Number]"; // Placeholder - to be filled in
-export const CLINIC_EMAIL = "[Email Address]"; // Placeholder - to be filled in
-export const CLINIC_FAX = "[Fax Number]"; // Placeholder - optional
+export const CLINIC_PHONE = "Phone: 705-728-8860"; // Placeholder - to be filled in
+export const CLINIC_FAX = "Fax: 705-737-4733"; // Placeholder - optional
 export const CLINIC_HOURS = {
   weekdays: "9:00 AM – 4:00 PM",
   days: "Monday to Friday",
@@ -17,7 +16,7 @@ export const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Forms", href: "/forms" },
-  { label: "Information", href: "/information" },
+  { label: "Information & FAQs", href: "/information" },
   { label: "Contact", href: "/contact" },
 ] as const;
 

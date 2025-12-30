@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useState } from 'react';
-import { CLINIC_NAME, NAV_ITEMS } from '@/src/lib/constants';
+import Link from "next/link";
+import { useState } from "react";
+import { CLINIC_NAME, NAV_ITEMS } from "@/src/lib/constants";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 shadow-sm">
+    <header className="bg-gradient-to-tr from-primary-900 via-primary-800 to-neutral-900 text-white sticky top-0 z-40 shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo/Brand */}
@@ -30,12 +30,15 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex md:space-x-8" aria-label="Main navigation">
+          <nav
+            className="hidden md:flex md:space-x-8"
+            aria-label="Main navigation"
+          >
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 transition-colors hover:bg-gray-100 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
               >
                 {item.label}
               </Link>
@@ -111,4 +114,3 @@ export default function Header() {
     </header>
   );
 }
-

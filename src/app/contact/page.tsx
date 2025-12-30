@@ -1,25 +1,24 @@
-import { Section } from '@/src/components/ui/Section';
-import { Card } from '@/src/components/ui/Card';
-import { Link } from '@/src/components/ui/Link';
-import type { Metadata } from 'next';
+import { Section } from "@/src/components/ui/Section";
+import { Card } from "@/src/components/ui/Card";
+import { Link } from "@/src/components/ui/Link";
+import type { Metadata } from "next";
 import {
   CLINIC_NAME,
   CLINIC_ADDRESS,
   CLINIC_PHONE,
-  CLINIC_EMAIL,
   CLINIC_FAX,
   CLINIC_HOURS,
   CLINIC_SPECIALTY,
   CLINIC_LOCATION,
-} from '@/src/lib/constants';
+} from "@/src/lib/constants";
 
 export const metadata: Metadata = {
   title: `Contact Us - ${CLINIC_NAME}`,
-  description: `Contact ${CLINIC_NAME} in ${CLINIC_LOCATION}. Located at ${CLINIC_ADDRESS}. Call us at ${CLINIC_PHONE} or email ${CLINIC_EMAIL}.`,
+  description: `Contact ${CLINIC_NAME} in ${CLINIC_LOCATION}. Located at ${CLINIC_ADDRESS}. Call us at ${CLINIC_PHONE}.`,
   openGraph: {
     title: `Contact Us - ${CLINIC_NAME}`,
     description: `Contact ${CLINIC_NAME} in ${CLINIC_LOCATION}. Located at ${CLINIC_ADDRESS}.`,
-    type: 'website',
+    type: "website",
   },
 };
 
@@ -114,36 +113,36 @@ function ClockIcon() {
 }
 
 export default function ContactPage() {
-  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CLINIC_ADDRESS)}`;
-  const phoneNumber = CLINIC_PHONE.replace(/[^0-9+]/g, '');
-  const hasFax = CLINIC_FAX && CLINIC_FAX !== '[Fax Number]';
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    CLINIC_ADDRESS
+  )}`;
+  const phoneNumber = CLINIC_PHONE.replace(/[^0-9+]/g, "");
 
   // LocalBusiness structured data
   const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'MedicalBusiness',
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
     name: CLINIC_NAME,
     description: `${CLINIC_NAME} specializes in ${CLINIC_SPECIALTY.toLowerCase()} in ${CLINIC_LOCATION}.`,
     address: {
-      '@type': 'PostalAddress',
-      streetAddress: '370 Bayview Dr',
-      addressLocality: 'Barrie',
-      addressRegion: 'ON',
-      postalCode: 'L4N 7L3',
-      addressCountry: 'CA',
+      "@type": "PostalAddress",
+      streetAddress: "370 Bayview Dr",
+      addressLocality: "Barrie",
+      addressRegion: "ON",
+      postalCode: "L4N 7L3",
+      addressCountry: "CA",
     },
-    telephone: CLINIC_PHONE !== '[Phone Number]' ? CLINIC_PHONE : undefined,
-    email: CLINIC_EMAIL !== '[Email Address]' ? CLINIC_EMAIL : undefined,
-    faxNumber: hasFax ? CLINIC_FAX : undefined,
+    telephone: CLINIC_PHONE,
+    faxNumber: CLINIC_FAX,
     openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '16:00',
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "16:00",
     },
     medicalSpecialty: CLINIC_SPECIALTY,
     areaServed: {
-      '@type': 'City',
+      "@type": "City",
       name: CLINIC_LOCATION,
     },
   };
@@ -154,91 +153,19 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <div className="flex min-h-screen flex-col">
+      <div className="flex flex-col">
         {/* Header Section */}
-        <Section variant="dark" className="py-12 sm:py-16">
+        <Section variant="dark" className="py-6">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-primary-200 sm:text-5xl">
               Contact Us
             </h1>
-            <p className="mt-4 text-lg text-gray-600">
+            <p className="mt-4 text-lg text-primary-400">
               We&apos;re here to help. Get in touch with us today.
             </p>
           </div>
-        </Section>
-
-        {/* Contact Information Cards */}
-        <Section className="py-12 sm:py-16">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            {/* Phone */}
-            <ContactInfoCard title="Phone" icon={<ContactIcon />}>
-              <p className="text-base text-gray-700">
-                <a
-                  href={`tel:${phoneNumber}`}
-                  className="font-medium text-primary-600 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
-                >
-                  {CLINIC_PHONE}
-                </a>
-              </p>
-              <p className="text-sm text-gray-500">
-                Call us during business hours
-              </p>
-            </ContactInfoCard>
-
-            {/* Email */}
-            <ContactInfoCard title="Email" icon={<ContactIcon />}>
-              <p className="text-base text-gray-700">
-                <a
-                  href={`mailto:${CLINIC_EMAIL}`}
-                  className="font-medium text-primary-600 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded break-all"
-                >
-                  {CLINIC_EMAIL}
-                </a>
-              </p>
-              <p className="text-sm text-gray-500">
-                Send us an email anytime
-              </p>
-            </ContactInfoCard>
-
-            {/* Location */}
-            <ContactInfoCard title="Location" icon={<LocationIcon />}>
-              <address className="not-italic text-base text-gray-700">
-                <p>{CLINIC_ADDRESS}</p>
-                <p className="mt-2">
-                  <Link
-                    href={mapUrl}
-                    external
-                    className="text-primary-600 hover:text-primary-700"
-                  >
-                    Get Directions →
-                  </Link>
-                </p>
-              </address>
-            </ContactInfoCard>
-
-            {/* Hours */}
-            <ContactInfoCard title="Hours" icon={<ClockIcon />}>
-              <div className="text-base text-gray-700 space-y-1">
-                <p className="font-medium">{CLINIC_HOURS.days}</p>
-                <p>{CLINIC_HOURS.weekdays}</p>
-              </div>
-            </ContactInfoCard>
-
-            {/* Fax (if available) */}
-            {hasFax && (
-              <ContactInfoCard title="Fax" icon={<ContactIcon />}>
-                <p className="text-base text-gray-700">{CLINIC_FAX}</p>
-                <p className="text-sm text-gray-500">
-                  For document transmission
-                </p>
-              </ContactInfoCard>
-            )}
-          </div>
-        </Section>
-
-        {/* Emergency Disclaimer */}
-        <Section variant="gradient" className="py-12 sm:py-16">
-          <div className="mx-auto max-w-3xl">
+          {/* Emergency Disclaimer */}
+          <div className="mx-auto max-w-3xl mt-5">
             <Card className="border-2 border-red-200 bg-red-50">
               <div className="flex items-start">
                 <div className="flex-shrink-0">
@@ -270,8 +197,57 @@ export default function ContactPage() {
             </Card>
           </div>
         </Section>
+
+        {/* Contact Information Cards */}
+        <Section className="py-12 sm:py-16">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {/* Phone */}
+            <ContactInfoCard title="Phone" icon={<ContactIcon />}>
+              <p className="text-base text-gray-700">
+                <a
+                  href={`tel:${phoneNumber}`}
+                  className="font-medium text-primary-600 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
+                >
+                  {CLINIC_PHONE}
+                </a>
+              </p>
+              <p className="text-sm text-gray-500">
+                Call us during business hours
+              </p>
+            </ContactInfoCard>
+
+            {/* Location */}
+            <ContactInfoCard title="Location" icon={<LocationIcon />}>
+              <address className="not-italic text-base text-gray-700">
+                <p>{CLINIC_ADDRESS}</p>
+                <p className="mt-2">
+                  <Link
+                    href={mapUrl}
+                    external
+                    className="text-primary-600 hover:text-primary-700"
+                  >
+                    Get Directions →
+                  </Link>
+                </p>
+              </address>
+            </ContactInfoCard>
+
+            {/* Hours */}
+            <ContactInfoCard title="Hours" icon={<ClockIcon />}>
+              <div className="text-base text-gray-700 space-y-1">
+                <p className="font-medium">{CLINIC_HOURS.days}</p>
+                <p>{CLINIC_HOURS.weekdays}</p>
+              </div>
+            </ContactInfoCard>
+
+            {/* Fax (if available) */}
+            <ContactInfoCard title="Fax" icon={<ContactIcon />}>
+              <p className="text-base text-gray-700">{CLINIC_FAX}</p>
+              <p className="text-sm text-gray-500">For document transmission</p>
+            </ContactInfoCard>
+          </div>
+        </Section>
       </div>
     </>
   );
 }
-

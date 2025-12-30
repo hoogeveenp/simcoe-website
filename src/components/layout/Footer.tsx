@@ -1,12 +1,12 @@
-import Link from 'next/link';
+import Link from "next/link";
 import {
   CLINIC_NAME,
   CLINIC_ADDRESS,
   CLINIC_PHONE,
-  CLINIC_EMAIL,
+  CLINIC_FAX,
   CLINIC_HOURS,
   NAV_ITEMS,
-} from '@/src/lib/constants';
+} from "@/src/lib/constants";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,7 +24,7 @@ export default function Footer() {
               <p>{CLINIC_ADDRESS}</p>
               <p>
                 <a
-                  href={`tel:${CLINIC_PHONE.replace(/[^0-9+]/g, '')}`}
+                  href={`tel:${CLINIC_PHONE.replace(/[^0-9+]/g, "")}`}
                   className="hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
                 >
                   {CLINIC_PHONE}
@@ -32,16 +32,11 @@ export default function Footer() {
               </p>
               <p>
                 <a
-                  href={`mailto:${CLINIC_EMAIL}`}
+                  href={`tel:${CLINIC_PHONE.replace(/[^0-9+]/g, "")}`}
                   className="hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"
                 >
-                  {CLINIC_EMAIL}
+                  {CLINIC_FAX}
                 </a>
-              </p>
-              <p>
-                {CLINIC_HOURS.weekdays}
-                <br />
-                {CLINIC_HOURS.days}
               </p>
             </address>
           </div>
@@ -66,9 +61,7 @@ export default function Footer() {
 
           {/* Additional Information */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">
-              Hours
-            </h3>
+            <h3 className="text-lg font-semibold text-white mb-4">Hours</h3>
             <div className="text-sm text-white space-y-1">
               <p>{CLINIC_HOURS.days}</p>
               <p>{CLINIC_HOURS.weekdays}</p>
@@ -86,4 +79,3 @@ export default function Footer() {
     </footer>
   );
 }
-
